@@ -1,0 +1,7 @@
+
+# Editor directories and files
+.DS_Store
+
+
+#Environment variable
+.env
