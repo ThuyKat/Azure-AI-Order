@@ -1,6 +1,3 @@
-I'll update your README to reflect that:
-
-```markdown
 # Voice Order System
 
 ## Overview
@@ -226,4 +223,3 @@ This project was created for the Azure AI Developer Hackathon.
 
 ## License
 MIT License
-```
