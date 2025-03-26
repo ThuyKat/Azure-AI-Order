@@ -1,13 +1,5 @@
-.order-page {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .menu-section, .speech-section {
+
+ .speech-section {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -16,79 +8,13 @@
     max-height: calc(100vh - 60px);
   }
   
-  .menu-section h2, .speech-section h2 {
+ .speech-section h2 {
     text-align: center;
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
   }
-  
-  .menu-filters {
-    margin-bottom: 20px;
-  }
-  
-  .search-bar {
-    margin-bottom: 15px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .category-tabs {
-    display: flex;
-    overflow-x: auto;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-  }
-  
-  .category-tabs button {
-    padding: 8px 16px;
-    margin-right: 8px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f5f5f5;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-  }
-  
-  .category-tabs button.active {
-    background-color: #4285f4;
-    color: white;
-  }
-  
-  .menu-items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
-  }
-  
-  .menu-item {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #eee;
-    transition: all 0.3s ease;
-  }
-  
-  .menu-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-  }
-  
-  .menu-item h4 {
-    margin: 0 0 5px 0;
-  }
-  
-  .price {
-    font-weight: bold;
-    color: #4285f4;
-  }
-  
+
   /* Quick reference menu */
   .quick-menu {
     background-color: rgba(255, 255, 255, 0.95);
@@ -234,9 +160,6 @@
   }
   
   @media (max-width: 768px) {
-    .order-page {
-      grid-template-columns: 1fr;
-    }
     
     .menu-section, .speech-section {
       max-height: none;

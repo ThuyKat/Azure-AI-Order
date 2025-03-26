@@ -1,7 +1,11 @@
 .order-history {
-    max-width: 800px;
+    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .order-history h2 {
@@ -11,9 +15,11 @@
   }
   
   .orders-list {
+    width:100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    justify-content: center;
   }
   
   .order-card {
@@ -103,4 +109,4 @@
     max-height: 90vh;
     overflow-y: auto;
   }
-  
+ 
