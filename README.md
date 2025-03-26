@@ -1,3 +1,6 @@
+I'll update your README to reflect that:
+
+```markdown
 # Voice Order System
 
 ## Overview
@@ -16,8 +19,8 @@ Voice Order System is an innovative application that uses Azure AI services to s
 - **Backend**: Node.js with Express
 - **Database**: MongoDB for menu and order storage
 - **Azure Services**: 
- - Speech-to-Text API
- - Language Understanding Service
+  - Speech-to-Text API
+  - Language Understanding Service
 - **Development Tools**: GitHub Copilot with VS Code
 
 ## How GitHub Copilot Enhanced Development
@@ -41,16 +44,20 @@ GitHub Copilot significantly accelerated our development process by:
 - **Order Listing** with most recent orders at the top left
 - **View Invoice** option for detailed order information
 - Three action buttons available:
- - **Edit Button** opens Edit Order page
- - **Confirm Button** changes status from pending to confirmed
- - **Delete Button** removes order from history
+  - **Edit Button** opens Edit Order page
+  - **Confirm Button** changes status from pending to confirmed
+  - **Delete Button** removes order from history
 
 ### Edit Order Page
 - **Order Details View** shows current order information
 - **Voice Command Button** activates Azure AI speech recognition
 - Azure Language API processes speech to identify:
- - Intent (update quantity, add items, remove items)
- - Item names and quantities
+  - Intent (update quantity, add items, remove items)
+  - Item names and quantities
+  - Negations ("not", "don't", etc.)
+- Supports natural language commands like:
+  - "Remove the cheeseburger" 
+  - "Please remove the cheeseburger"
 - **Save Changes Button** commits changes to database
 - Returns to Order History Page after saving
 
@@ -64,9 +71,9 @@ voice-order-system/
 ├── frontend/              # React application
 │   ├── public/            # Static assets
 │   └── src/               # React components
-│       ├── components/    # UI components
-│       ├── services/      # API service integrations
-│       ├── utils/         # Voice command processing utilities
+│       ├── pages/         # Application pages
+│       ├── hooks/         # React hooks for state and API
+│       ├── utils/         # Voice command and order processing utilities
 │       └── App.js         # Main application
 └── README.md              # Project documentation
 ```
@@ -219,3 +226,4 @@ This project was created for the Azure AI Developer Hackathon.
 
 ## License
 MIT License
+```
