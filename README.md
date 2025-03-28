@@ -233,7 +233,7 @@ flowchart TD
 - Add image recognition for visual menu items using Azure Computer Vision
 
 ## Demo
-[Watch our demo video](https://youtu.be/your-demo-link)
+[Watch our demo video](https://youtu.be/9CZqfIcfH0k?feature=shared)
 
 ## Installation & Setup
 
