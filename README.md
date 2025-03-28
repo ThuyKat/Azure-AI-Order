@@ -257,7 +257,7 @@ flowchart TD
 4. Run the development servers
    ```
    # Backend
-   cd backend && npm run dev
+   cd backend && npm run seed && npm run dev
    
    # Frontend
    cd frontend && npm run dev
