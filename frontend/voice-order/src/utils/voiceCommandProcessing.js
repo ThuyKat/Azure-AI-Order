@@ -8,35 +8,11 @@ const processVoiceCommand = async (text, order, updateOrderItems, setMessage) =>
         'a': 1, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
         'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10
     };
-    // Call Azure Language service
-    const languageEndpoint = import.meta.env.VITE_AZURE_LANGUAGE_ENDPOINT
-    const apiKey = import.meta.env.VITE_AZURE_LANGUAGE_KEY
-    
-    const response = await axios.post(
-      `${languageEndpoint}/language/:analyze-conversations?api-version=2022-10-01-preview`,
-      {
-        kind: "Conversation",
-        analysisInput: {
-          conversationItem: {
-            id: "1",
-            text: text,
-            modality: "text",
-            participantId: "user"
-          }
-        },
-        parameters: {
-          projectName: "VoiceCommand",
-          deploymentName: "production",
-          verbose: true
-        }
-      },
-      {
-        headers: {
-          'Ocp-Apim-Subscription-Key': apiKey,
-          'Content-Type': 'application/json'
-        }
-      }
-    )
+    // Call Azure Language service to analyze text
+    const response = await axios.post('http://localhost:5000/api/language/analyze-text',{
+      text:text},{
+      headers:{ 'Content-Type': 'application/json'}
+    })
     
     // Extract intent and entities
     const result = response.data.result

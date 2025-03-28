@@ -81,7 +81,10 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
+  .refresh-button{
+    background-color:#dfe2e8
+  }
+
   @keyframes pulse {
     0% {
       transform: scale(1);
@@ -97,7 +100,7 @@
     }
   }
   
-  .transcript {
+  .order.transcript {
     margin-top: 20px;
     padding: 15px;
     background-color: #f5f5f5;
@@ -153,6 +156,10 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+  }
+  .checkout{
+    display:block;
+    width:100%;
   }
   
   .checkout-button:hover {

@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 // Add a menu item
 router.post('/', async (req, res) => {
   const menuItem = new MenuItem({
-    name: req.body.name,
-    price: req.body.price,
-    category: req.body.category,
-    keywords: req.body.keywords,
-    available: req.body.available
+    name: req.body.item.name,
+    price: req.body.item.price,
+    category: req.body.item.category,
+    keywords: req.body.item.keywords,
+    available: req.body.item.available
   })
 
   try {

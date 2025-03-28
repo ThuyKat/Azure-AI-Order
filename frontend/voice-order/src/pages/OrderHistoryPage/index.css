@@ -109,4 +109,14 @@
     max-height: 90vh;
     overflow-y: auto;
   }
- 
+  /* highlight newly added order */
+  @keyframes highlightOrder {
+    0% { background-color: rgba(33, 150, 243, 0.3); }
+    50% { background-color: rgba(33, 150, 243, 0.1); }
+    100% { background-color: transparent; }
+  }
+  
+  .highlight-order {
+    animation: highlightOrder 3s ease;
+    border-left: 4px solid #2196f3;
+  }

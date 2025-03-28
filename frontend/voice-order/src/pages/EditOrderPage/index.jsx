@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useSpeechRecognition } from '../../hooks/useSpeechRecognition'
@@ -10,7 +10,7 @@ export default function EditOrder () {
   const navigate = useNavigate()
   const [order, setOrder] = useState(null)
   const [loading, setLoading] = useState(true)
-  const {transcript,setTranscript,isListening,message,setMessage,startListening,stopListening} = useSpeechRecognition()
+  const {transcript,setTranscript,isListening,setIsListening,message,setMessage,startListening,stopListening} = useSpeechRecognition()
   // Fetch the order details
   useEffect(() => {
     const fetchOrder = async () => {
@@ -30,6 +30,7 @@ export default function EditOrder () {
 
   // Handle voice commands
   const handleStartListening = async() => {
+    setTranscript('')
     await startListening()
   }
   const handleStopListening = async() => {
@@ -76,48 +77,39 @@ export default function EditOrder () {
       {message && <div className="message">{message}</div>}
       
       <div className="voice-controls">
-        {!isListening? ( 
-        <button 
-          className= "speak-btn "
-          onClick={handleStartListening}
+        <button
+          className={`speak-btn ${isListening ? 'listening' : ''}`}
+          onClick={isListening ? handleStopListening : handleStartListening}
         >
-          🔊 Start Listening
-          
-        </button>):(
-          <button
-            className='speak-btn listening'
-            onClick={handleStopListening}
-          >
-            🛑 Stop Listening and Send
-          </button>
-        ) }
+            {isListening ? '🛑 Stop Listening and Send' : '🔊 Start Listening'}
+        </button>
         <button
           className='clear-btn'
-          onClick={() => {
+          onClick={(event) => {
+            event.stopPropagation()
             setMessage('')
             setTranscript('')
+            setIsListening(false)
           }}
         >
           ↻ Refresh
         </button>
+        <div className="voice-help">
+          <p>Try saying:</p>
+          <ul>
+            <li>"Add a sandwich"</li>
+            <li>"Change sandwich to 2 or I want 2 sandwiches"</li>
+            <li>"Remove the sandwich"</li>
+          </ul>
+        </div>
         
-        
-        {transcript && (
+      </div>
+      {transcript && (
           <div className="transcript">
             <h4>I heard:</h4>
             <p>{transcript}</p>
           </div>
         )}
-        
-        <div className="voice-help">
-          <p>Try saying:</p>
-          <ul>
-            <li>"Add a chocolate muffin"</li>
-            <li>"Remove the coffee"</li>
-            <li>"Change sandwich to 2"</li>
-          </ul>
-        </div>
-      </div>
       
       <div className="current-order">
         <h3>Current Items</h3>

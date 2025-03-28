@@ -1,232 +1,242 @@
 .edit-order-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
 }
-  
+
 .edit-order-container h2 {
-    color: #333;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 10px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 10px;
 }
 
 .message {
-    padding: 12px;
-    margin: 10px 0 20px;
-    background-color: #f8f9fa;
-    border-left: 4px solid #007bff;
-    border-radius: 4px;
-    color: #333;
+  padding: 12px;
+  margin: 10px 0 20px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+  color: #333;
 }
 
 /* Voice controls section */
 .voice-controls {
-    background-color: #f0f8ff;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap:20px;
+  background-color: #f0f8ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .speak-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 150px;
-    transition: all 0.3s ease;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  transition: all 0.3s ease;
 }
 
 .speak-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .speak-btn.listening {
-    background-color: #dc3545;
-    animation: pulse 1.5s infinite;
+  background-color: #dc3545;
+  animation: pulse 1.5s infinite;
 }
 
-.clear-btn{
-    background-color: #0c7e53;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 150px;
-    transition: all 0.3s ease;
+.clear-btn {
+  background-color: #0c7e53;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  transition: all 0.3s ease;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
+
 
 .transcript {
     margin-top: 20px;
     padding: 15px;
-    background-color: #f5f5f5;
-    border-radius: 6px;
-}
+    background-color: #caecdc;
+    border-radius: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
 
 .transcript h4 {
-    margin-top: 0;
-    color: #555;
+  margin-top: 0;
+  color: #555;
 }
 
 .transcript p {
-    margin-bottom: 0;
-    font-style: italic;
-    color: #333;
+  margin-bottom: 0;
+  font-style: italic;
+  color: #333;
 }
 
 .voice-help {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #fafafa;
-    border: 1px dashed #ccc;
-    border-radius: 6px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fafafa;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
 }
 
 .voice-help p {
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #555;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
 }
 
 .voice-help ul {
-    margin: 0;
-    padding-left: 20px;
+  margin: 0;
+  padding-left: 20px;
 }
 
 .voice-help li {
-    margin-bottom: 6px;
-    color: #666;
+  margin-bottom: 6px;
+  color: #666;
 }
 
 /* Current order section */
 .current-order {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .current-order h3 {
-    color: #333;
-    margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .current-order table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.current-order th, 
+.current-order th,
 .current-order td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 .current-order th {
-    background-color: #f8f9fa;
-    color: #333;
-    font-weight: bold;
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: bold;
 }
 
 .current-order tr:hover {
-    background-color: #f5f9ff;
+  background-color: #f5f9ff;
 }
 
 .current-order tfoot {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .current-order tfoot td {
-    border-top: 2px solid #ddd;
+  border-top: 2px solid #ddd;
 }
 
 .current-order button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .current-order button:hover {
-    background-color: #c82333;
+  background-color: #c82333;
 }
 
 /* Action buttons */
 .actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .actions button {
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .actions button:first-child {
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    color: #333;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #333;
 }
 
 .actions button:first-child:hover {
-    background-color: #e2e6ea;
+  background-color: #e2e6ea;
 }
 
 .actions button:last-child {
-    background-color: #28a745;
-    border: none;
-    color: white;
+  background-color: #28a745;
+  border: none;
+  color: white;
 }
 
 .actions button:last-child:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
+  background-color: #218838;
+  transform: translateY(-2px);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-.current-order table {
+  .current-order table {
     display: block;
     overflow-x: auto;
-}
+  }
 
-.actions {
+  .actions {
     flex-direction: column;
-}
+  }
 
-.actions button {
+  .actions button {
     width: 100%;
-}
+  }
 }

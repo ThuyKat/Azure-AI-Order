@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState} from 'react'
 import './OrderPage.css'
 import { useSpeechRecognition } from '../../../hooks/useSpeechRecognition'
-import { processOrder } from '../../../utils/orderProcessing'
+import { processOrder,saveOrder } from '../../../utils/orderProcessing'
+import {useNavigate} from 'react-router-dom'
 
 const OrderPage = ({menuItems}) => {
-  const {transcript,isListening,startListening,stopListening} = useSpeechRecognition()
+  const {transcript,setTranscript,isListening,setIsListening,message,setMessage,startListening,stopListening} = useSpeechRecognition()
   const [order, setOrder] = useState(null)
-  const recognizerRef = useRef(null)
-
+  const navigate = useNavigate()
   const handleStartListening = async() => {
     await startListening()
   }
@@ -16,6 +16,23 @@ const OrderPage = ({menuItems}) => {
     const newOrder = await processOrder(finalTranscript)
     setOrder(newOrder)
   }
+  const handleSaveOrder = async() =>{
+    if(order){
+      try {
+        const response = await saveOrder(order)
+        console.log(response)
+        //update order id
+        setOrder({...order,id:response.order._id})
+        alert("Order is saved!")
+        
+      } catch (error) {
+        console.log("error saving order")
+      }
+    }
+  }
+  const handleViewOrder = ()=>{
+    navigate("/history",{ state: { newOrderId: order.id } })
+  }
   // Get the top 6 most popular items for the quick menu
   const popularItems = [...menuItems]
     .sort((a, b) => (b.popularityScore || 0) - (a.popularityScore || 0))
@@ -23,7 +40,7 @@ const OrderPage = ({menuItems}) => {
     
   return (
     
-      <div className="speech-section">
+      <div className="order speech-section">
         <h2>Your Order</h2>
         
         {!isListening ? (
@@ -54,6 +71,17 @@ const OrderPage = ({menuItems}) => {
             >
               Confirm Order
             </button>
+            <button 
+              onClick={(event) => {
+                event.stopPropagation()
+                setMessage('')
+                setTranscript('')
+                setIsListening(false)
+              }}
+              className="speech-button refresh-button"
+            >
+              Try again
+            </button>
           </>
         )
         }
@@ -83,7 +111,22 @@ const OrderPage = ({menuItems}) => {
                   <div>Tax: ${order.tax.toFixed(2)}</div>
                   <div className="total">Total: ${order.total.toFixed(2)}</div>
                 </div>
-                <button className="checkout-button">Proceed to Checkout</button>
+                <button 
+                  className={`checkout-button ${order?.id ? 'view-button' : ''}`} 
+                  onClick={order?.id ? handleViewOrder : handleSaveOrder}
+                >
+                      {order?.id ? 'View Order' : 'Confirm to Save'}
+                </button>
+                <button 
+                  className="speech-button refresh-button checkout" 
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    setMessage('')
+                    setTranscript('')
+                    setOrder(null)
+                  }}>
+                    Try Again
+                </button>
               </>
             ) : (
               <p>No items detected in your order. Please try again.</p>

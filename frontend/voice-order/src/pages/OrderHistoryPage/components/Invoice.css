@@ -14,21 +14,21 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
 }
-  
-.invoice-items table {
+
+.invoice-item table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
   
-.invoice-items th {
+.invoice-item th {
     text-align: left;
     padding: 10px;
     border-bottom: 2px solid #eee;
     color: #555;
 }
   
-.invoice-items td {
+.invoice-item td {
 padding: 10px;
 border-bottom: 1px solid #eee;
 }

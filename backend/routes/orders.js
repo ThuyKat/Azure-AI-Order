@@ -18,19 +18,49 @@ router.post('/process',async(req,res)=>{
         const tax = subtotal * 0.10 // 10% tax
         const total = subtotal + tax
         // Create a new order
-        const newOrder = new Order({
+        const newOrder = {
         items: orderItems,
         subtotal,
         tax,
         total
-        })
-        await newOrder.save();
+        }
         res.status(201).json(newOrder);
     }catch(err){
         res.status(400).json({ message: err.message });
     }
 })
-
+// Save  order to database
+router.post('/save', async (req, res) => {
+    try {
+      const { orderData } = req.body
+      
+      // Validate order data
+      if (!orderData || !orderData.items || !orderData.total) {
+        return res.status(400).json({ message: 'Invalid order data' })
+      }
+      
+      // Create a new Order instance from the order data
+      let newOrder = new Order({
+        items: orderData.items,
+        subtotal: orderData.subtotal,
+        tax: orderData.tax,
+        total: orderData.total,
+        status: orderData.status || 'pending'
+      })
+      
+      // Save to database
+      newOrder = await newOrder.save()
+      
+      res.status(201).json({
+        success: true,
+        message: 'Order saved successfully',
+        order: newOrder
+      })
+      
+    } catch (err) {
+      res.status(400).json({ success: false, message: err.message });
+    }
+  });
 // Helper function to extract order items from transcript
 function extractOrderItems(transcript,menuItems){
     const items = []
@@ -117,7 +147,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
-// Update an order
+// Update an order items
 router.put('/:id', async (req, res) => {
     try {
       const order = await Order.findById(req.params.id)
@@ -160,7 +190,7 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 })
-//confirm an order
+//confirm an order (update status of existing order)
 router.patch('/:id/confirm', async (req, res) => {
     try {
         const order = await Order.findById(req.params.id)

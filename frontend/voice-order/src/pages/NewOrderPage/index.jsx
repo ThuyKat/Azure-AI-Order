@@ -1,4 +1,3 @@
-// Code for the main component of the app, which fetches the menu items from the server and renders the Menu and OrderPage components.
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Menu from './components/Menu'
@@ -15,7 +14,7 @@ export default function MainApp() {
           setMenuItems(response.data)
           setLoading(false)
         } catch (error) {
-          console.error('Error fetching menu:', error)
+          console.log('Error fetching menu:', error)
           setLoading(false)
         }
       }

@@ -4,12 +4,31 @@ import axios from 'axios'
 export const processOrder = async (transcript) => {
   try {
     // Send to backend for processing
-    const response = await axios.post('http://localhost:5000/api/orders/process', {
-      transcript
-    })
+    const response = await axios.post('http://localhost:5000/api/orders/process', {transcript}, {
+      headers: {'Content-Type': 'application/json'}}
+    )
     return response.data
   } catch (error) {
     console.error('Error processing order:', error)
+    throw error
+  }
+}
+//save order to database
+export const saveOrder = async(order)=>{
+  console.log(order)
+  try{
+    const response = await axios.post('http://localhost:5000/api/orders/save',{orderData: order},{
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
+    if(response.status === 201){
+      console.log(response)
+      return response.data
+    }
+
+  }catch (error) {
+    console.error('Error saving order:', error)
     throw error
   }
 }
