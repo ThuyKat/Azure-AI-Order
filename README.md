@@ -1,3 +1,4 @@
+
 # Voice Order System
 
 ## Overview
@@ -9,6 +10,7 @@ Voice Order System is an innovative application that uses Azure AI services to s
 - Interactive order management across three intuitive pages
 - Voice command processing for adding, updating, and removing items
 - Order history tracking with status updates
+- Menu scanning functionality to extract items from images or PDFs
 - Responsive design that works across devices
 
 ## Technology Stack
@@ -18,6 +20,8 @@ Voice Order System is an innovative application that uses Azure AI services to s
 - **Azure Services**: 
   - Speech-to-Text API
   - Language Understanding Service
+  - Form Recognizer / Document Intelligence 
+  - Azure OpenAI Service
 - **Development Tools**: GitHub Copilot with VS Code
 
 ## How GitHub Copilot Enhanced Development
@@ -58,12 +62,20 @@ GitHub Copilot significantly accelerated our development process by:
 - **Save Changes Button** commits changes to database
 - Returns to Order History Page after saving
 
+### Menu Scanner Page
+- Upload menu images or PDFs with clear instructions
+- Azure Form Recognizer extracts text from the document
+- Azure OpenAI processes the text to identify menu items, prices, descriptions, and categories
+- Interactive editor for reviewing and modifying extracted items
+- Save functionality to add items to the restaurant's menu database
+
 ## Project Structure
 ```
 voice-order-system/
 ├── backend/               # Node.js Express API
 │   ├── models/            # MongoDB schemas
 │   ├── routes/            # API endpoints
+│   ├── utils/             # Processing utilities
 │   └── server.js          # Server configuration
 ├── frontend/              # React application
 │   ├── public/            # Static assets
@@ -71,6 +83,7 @@ voice-order-system/
 │       ├── pages/         # Application pages
 │       ├── hooks/         # React hooks for state and API
 │       ├── utils/         # Voice command and order processing utilities
+│       ├── components/    # Reusable UI components
 │       └── App.js         # Main application
 └── README.md              # Project documentation
 ```
@@ -102,6 +115,8 @@ flowchart TD
         E1["🧠 Azure AI Language Service"]:::azureService
         E2["🎯 Intent Recognition"]:::azureFeature
         E3["🏷️ Entity Extraction"]:::azureFeature
+        E4["📑 Form Recognizer Service"]:::azureService
+        E5["🤖 Azure OpenAI Service"]:::azureService
         
         E0 --> E01["👂 Speech Recognition"]:::azureFeature
         E01 --> E02["📄 Text Extraction (e.result.text)"]:::azureFeature
@@ -117,6 +132,12 @@ flowchart TD
         E2 --> E21["🔄 Update Quantity Intent"]:::subProcess
         E2 --> E22["➕ Add Item Intent"]:::subProcess
         E2 --> E23["➖ Remove Item Intent"]:::subProcess
+        
+        E4 --> E41["🔍 Document Analysis"]:::azureFeature
+        E41 --> E42["📝 OCR Text Extraction"]:::azureFeature
+        
+        E5 --> E51["📊 Menu Structure Analysis"]:::azureFeature
+        E5 --> E52["🏷️ Menu Item Classification"]:::azureFeature
     end
     
     subgraph "Backend Processing"
@@ -162,6 +183,23 @@ flowchart TD
         D6 --> D5
     end
     
+    subgraph "Menu Scanner Page"
+        M1["📷 Upload Menu Image/PDF"]:::actionButton
+        M2["📋 Form Recognizer Processing"]:::mainProcess
+        M3["🧠 OpenAI Analysis"]:::mainProcess
+        M4["📝 Menu Item Review"]:::subProcess
+        M5["✏️ Edit Item Details"]:::actionButton
+        M6["💾 Save to Menu Database"]:::actionButton
+        
+        M1 --> M2
+        M2 --> M3
+        M3 --> M4
+        M4 --> M5
+        M5 --> M4
+        M4 --> M6
+        M6 --> B3
+    end
+    
     %% Main flow connections
     A7 --> B1
     B3 --> C1
@@ -177,6 +215,10 @@ flowchart TD
     D4 -.-> E1
     E2 -.-> D7
     E3 -.-> D8
+    M2 -.-> E4
+    E42 -.-> M3
+    M3 -.-> E5
+    E52 -.-> M4
     
     %% Status flow
     C421 --> B3
@@ -188,6 +230,7 @@ flowchart TD
 - Implement Azure Text Analytics for sentiment analysis of customer feedback
 - Create a restaurant management dashboard with ordering analytics
 - Integrate payment processing through Azure Functions
+- Add image recognition for visual menu items using Azure Computer Vision
 
 ## Demo
 [Watch our demo video](https://youtu.be/your-demo-link)
@@ -199,6 +242,8 @@ flowchart TD
 - MongoDB
 - Azure Speech Services account
 - Azure Language Understanding Service
+- Azure Form Recognizer Service
+- Azure OpenAI Service
 - GitHub Copilot access
 
 ### Getting Started
@@ -221,5 +266,3 @@ flowchart TD
 ## Hackathon Submission
 This project was created for the Azure AI Developer Hackathon.
 
-## License
-MIT License
