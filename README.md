@@ -77,13 +77,13 @@ voice-order-system/
 │   ├── routes/            # API endpoints
 │   ├── utils/             # Processing utilities
 │   └── server.js          # Server configuration
+│   └── seeder.js          # Database setup
 ├── frontend/              # React application
 │   ├── public/            # Static assets
 │   └── src/               # React components
 │       ├── pages/         # Application pages
 │       ├── hooks/         # React hooks for state and API
 │       ├── utils/         # Voice command and order processing utilities
-│       ├── components/    # Reusable UI components
 │       └── App.js         # Main application
 └── README.md              # Project documentation
 ```
