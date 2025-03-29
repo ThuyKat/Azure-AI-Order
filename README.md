@@ -261,7 +261,7 @@ flowchart TD
    cd backend && npm run seed && npm run dev
    
    # Frontend
-   cd frontend && npm run dev
+   cd frontend && cd voice-order && npm run dev
    ```
 
 ## Hackathon Submission
