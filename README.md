@@ -81,10 +81,11 @@ voice-order-system/
 ├── frontend/              # React application
 │   ├── public/            # Static assets
 │   └── src/               # React components
+|       ├── assets/        # Application assets
 │       ├── pages/         # Application pages
 │       ├── hooks/         # React hooks for state and API
 │       ├── utils/         # Voice command and order processing utilities
-│       └── App.js         # Main application
+│       └── App.jsx        # Main application
 └── README.md              # Project documentation
 ```
 
