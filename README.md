@@ -42,7 +42,7 @@ GitHub Copilot significantly accelerated our development process by:
 - Backend extracts details and saves to database
 
 ### Order History Page
-- **Order Listing** with most recent orders at the top left
+- **Order Listing** with most recent orders at the bottom right
 - **View Invoice** option for detailed order information
 - Three action buttons available:
   - **Edit Button** opens Edit Order page
